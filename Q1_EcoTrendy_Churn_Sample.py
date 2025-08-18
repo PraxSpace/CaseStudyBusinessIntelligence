@@ -48,6 +48,7 @@ def generateData(n):
         "LastPurchase": lastPurchase,
         "Loyalty": loyalty,
         "Engagement": np.random.choice(["High","Medium","Low"], n, p=[0.2,0.5,0.3]),
+        "SpecialOffer": np.random.choice(["Yes","No"], n, p=[0.5,0.5]),
         "Churned": churned,
     }
     df = pd.DataFrame(data)
@@ -69,7 +70,7 @@ eda(data)
 
 # 4. Encode categorical features
 def encoder(data):
-    label_cols = ['PurchaseFreq', 'Loyalty', 'Engagement']
+    label_cols = ['PurchaseFreq', 'Loyalty', 'Engagement','SpecialOffer']
     for col in label_cols:
         le = LabelEncoder()
         data[col] = le.fit_transform(data[col])
@@ -78,7 +79,7 @@ data = encoder(data)
 
 # 5. Select features and label
 def featureSelection(data):
-    features = ['Tenure','NumPurchases', 'NumReturns','AvgOrderValue','PurchaseFreq','Complaints','Loyalty','Engagement']
+    features = ['Tenure','NumPurchases', 'NumReturns','PurchaseFreq','Complaints','SpecialOffer','Loyalty','Engagement']
     X = data[features]
     y = data['Churned']
     return X, y, features
