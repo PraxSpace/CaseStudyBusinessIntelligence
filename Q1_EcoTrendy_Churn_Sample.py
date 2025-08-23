@@ -121,3 +121,10 @@ feat_impt.plot(kind='bar')
 plt.title('Feature Importance (Logistic Regression)')
 plt.ylabel('Coefficient Magnitude')
 plt.show()
+
+
+print(feat_impt[:5])
+feat_impt[:5].plot(kind='bar')
+plt.ylabel('Feature Importance')
+plt.title('Top 5 Features by Importance')
+plt.show()
