@@ -17,11 +17,6 @@ df['UpsellTarget'] = (
 # Segment analysis by Engagement and Loyalty
 segment_counts = df.groupby(['Engagement', 'Loyalty'])['UpsellTarget'].sum().unstack(fill_value=0)
 
-# Plot segment by Engagement/Loyalty
-segment_counts.plot(kind='bar', stacked=True, color=['skyblue', 'coral'])
-plt.title('High-potential Upsell/Cross-sell Segments by Engagement and Loyalty')
-plt.ylabel('Number of High-potential Customers')
-plt.show()
 
 # Analyze feature importance: who accepted special offers in the past?
 offer_accept = df[df['SpecialOffer'] == 'Yes']
